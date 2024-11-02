@@ -60,6 +60,22 @@ public class GameController {
 		return "redirect:/";
 	}
 
+	@GetMapping("/start_game/{id}")
+	public ResponseEntity<Map<String, Object>> startGame(@PathVariable int id) {
+		game.startNewGame();  // Assuming you have a method to initialize a new game
+		List<Player> players = game.getPlayers();
+		List<Map<String, String>> playerDetails = players.stream().map(player -> {
+			Map<String, String> playerMap = new HashMap<>();
+			playerMap.put("name", player.getName());
+			return playerMap;
+		}).collect(Collectors.toList());
+
+		Map<String, Object> response = new HashMap<>();
+		response.put("players", playerDetails);
+
+		return ResponseEntity.ok(response);
+	}
+
 	@GetMapping("/event/{id}")
 	public ResponseEntity<Map<String, Object>> getEvent(@PathVariable int id) {
 		List<Player> players = game.getPlayers();
