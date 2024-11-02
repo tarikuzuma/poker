@@ -1,5 +1,6 @@
 package com.entjava.poker.hand;
 
+import com.entjava.poker.game.Player;
 import com.entjava.poker.hand.types.Flush;
 import com.entjava.poker.hand.types.FullHouse;
 import com.entjava.poker.card.Card;
@@ -42,5 +43,15 @@ public abstract class Hand implements Comparable{
         }
 
         return comparison;
+    }
+
+    private Player player;
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    public Player getPlayer() {
+        return player;
     }
 }

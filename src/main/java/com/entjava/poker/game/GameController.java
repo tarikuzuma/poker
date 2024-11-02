@@ -2,12 +2,17 @@ package com.entjava.poker.game;
 
 import com.entjava.poker.card.BlankCard;
 import com.entjava.poker.card.Card;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Controller
 public class GameController {
@@ -54,4 +59,28 @@ public class GameController {
 
 		return "redirect:/";
 	}
+
+	@GetMapping("/event/{id}")
+	public ResponseEntity<Map<String, Object>> getEvent(@PathVariable int id) {
+		List<Player> players = game.getPlayers();
+
+		// Update here
+		String winnerName = game.getWinningHand()
+				.map(hand -> hand.getPlayer().getName())
+				.orElse("No winner determined");
+
+		List<Map<String, String>> playerDetails = players.stream().map(player -> {
+			Map<String, String> playerMap = new HashMap<>();
+			playerMap.put("name", player.getName());
+			playerMap.put("hand", player.getHand() != null ? player.getHand().toString() : "No hand");
+			return playerMap;
+		}).collect(Collectors.toList());
+
+		Map<String, Object> response = new HashMap<>();
+		response.put("players", playerDetails);
+		response.put("winner", winnerName);
+
+		return ResponseEntity.ok(response);
+	}
+
 }

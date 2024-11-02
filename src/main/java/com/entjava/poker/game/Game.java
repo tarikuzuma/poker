@@ -97,6 +97,10 @@ public class Game {
         }
     }
 
+    public Optional<Hand> getWinningHand() {
+        return Optional.ofNullable(winningHand);
+    };
+
     /**
      * Checks the combination of the players and community cards to identify the winning hand.
      *
