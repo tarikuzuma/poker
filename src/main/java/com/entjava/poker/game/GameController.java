@@ -54,4 +54,15 @@ public class GameController {
 
 		return "redirect:/";
 	}
+
+	//	postmapping endpoint with number of players
+	//	payload contains the players and their names
+	//	/start_game/{4}
+
+	//	log message when players are not registered
+
+	//	save the winners and losers in the database
+
+	//	getmapping endpoint with id of event
+	//	the event is returned along with the players, hands, and the winner name
 }

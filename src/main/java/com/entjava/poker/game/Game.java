@@ -9,6 +9,7 @@ import com.entjava.poker.hand.HandIdentifier;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -37,9 +38,14 @@ public class Game {
     public Game(DeckBuilder deckBuilder,
                 HandIdentifier handIdentifier,
                 WinningHandCalculator winningHandCalculator) {
-        players.add(new Player("Alex"));
-        players.add(new Player("Bob"));
-        players.add(new Player("Jane"));
+        players.add(new Player("Danziel"));
+        players.add(new Player("Edwin"));
+        players.add(new Player("JM"));
+        players.add(new Player("Kai"));
+        players.add(new Player("Kent"));
+        players.add(new Player("Liam"));
+        players.add(new Player("Vinz"));
+        players.add(new Player("Mon"));
 
         this.deckBuilder = deckBuilder;
         this.handIdentifier = handIdentifier;

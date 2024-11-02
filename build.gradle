@@ -27,8 +27,12 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 	compile('org.webjars:bootstrap:4.1.2')
-
 	compile('org.springframework.boot:spring-boot-devtools')
+
+	// Spring Data JPA
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	// H2 Database
+	runtimeOnly 'com.h2database:h2'
 
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
