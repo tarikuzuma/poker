@@ -2,12 +2,18 @@ package com.entjava.poker.game;
 
 import com.entjava.poker.card.BlankCard;
 import com.entjava.poker.card.Card;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.net.URI;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class GameController {
@@ -17,6 +23,32 @@ public class GameController {
 	public GameController(Game game) {
 		this.game = game;
 	}
+
+	//	[
+	//		{ "name": "Chance" },
+	//		{ "name": "AliceGuo" },
+	//		{ "name": "Lakas Tama" },
+	//		{ "name": "Akira Chancellor" }
+	//	]
+	@PostMapping("/start_game/{numberOfPlayers}")
+	public ResponseEntity<?> startGame(
+			@PathVariable int numberOfPlayers,
+			@RequestBody List<Player> players,
+			RedirectAttributes redirectAttributes) {
+		int playerCount = players.size();
+
+		// Validate that the number of players is between 2 and 6
+		if (playerCount < 2 || playerCount > 6) {
+			// Return a 400 Bad Request with an error message in JSON format
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+					.body("Invalid number of players: must be between 2 and 6.");
+		}
+
+		// If valid, set up a redirect response
+		HttpHeaders headers = new HttpHeaders();
+		headers.setLocation(URI.create("/"));  // Redirect to the main page or desired location
+		return new ResponseEntity<>(headers, HttpStatus.FOUND); // 302 Found for redirect
+    }
 
 	@GetMapping("/")
 	public String index(Model model) {
