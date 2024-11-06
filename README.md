@@ -110,3 +110,14 @@ new classes you might create.
 - **User Standings**: The front page now displays the total wins of each player.
 - **Event Details Endpoint**: A new endpoint `/api/event/{eventId}` returns the details of an event, including the players and the winner.
 
+### Available Endpoints:
+- **GET /api/events**  
+  Retrieves a list of all available game IDs with their respective session information.
+- **GET /api/players**  
+  Returns a list of all players, including their IDs, names, and the total number of players.
+- **GET /api/players/{id}**  
+  Retrieves detailed information for a specific player, including the player's ID and name.
+- **GET /api/event/{id}**  
+  Returns the results of a specific event by ID, displaying the winning players in the session along with their cards.
+- **POST /game_start/{id}**  
+  Starts a new game session for a specified game ID with a given number of players.
