@@ -22,3 +22,12 @@ CREATE TABLE hand (
                       high_card VARCHAR(255),
                       FOREIGN KEY (player_id) REFERENCES player(id)
 );
+
+-- Insert a game event record first
+INSERT INTO game_event (event_timestamp) VALUES (CURRENT_TIMESTAMP);
+
+-- Now insert player records, referencing the existing game event
+INSERT INTO player (name, is_winner, game_event_id) VALUES
+                                                        ('Alice', TRUE, 1),
+                                                        ('Bob', FALSE, 1),
+                                                        ('Charlie', FALSE, NULL);

@@ -1,7 +1,9 @@
-package com.entjava.poker.game;
+package com.entjava.poker.controllers;
 
 import com.entjava.poker.card.BlankCard;
 import com.entjava.poker.card.Card;
+import com.entjava.poker.game.Game;
+import com.entjava.poker.game.Player;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

@@ -40,6 +40,8 @@ public class Game {
         players.add(new Player("Alex"));
         players.add(new Player("Bob"));
         players.add(new Player("Jane"));
+        players.add(new Player("Chance"));
+        players.add(new Player("Akira"));
 
         this.deckBuilder = deckBuilder;
         this.handIdentifier = handIdentifier;

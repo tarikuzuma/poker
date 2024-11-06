@@ -3,24 +3,22 @@ package com.entjava.poker.model;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
-
 @Entity
-@Table(name="game_event")
+@Table(name = "game_event")
 public class GameEvent {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;  // Changed to Long
 
     @Column(name = "event_timestamp", nullable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime eventTimestamp;
 
     public GameEvent() {
-        // Default Constructor
+        this.eventTimestamp = LocalDateTime.now(); // Initialize with current timestamp
     }
 
     // Getters and setters
-
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
@@ -36,4 +34,6 @@ public class GameEvent {
     public String toString() {
         return "GameEvent [id=" + id + ", eventTimestamp=" + eventTimestamp + "]";
     }
+
+    // Optional: Override equals() and hashCode() if needed
 }

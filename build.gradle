@@ -16,18 +16,23 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.webjars:bootstrap:4.1.2'
 	implementation 'org.springframework.boot:spring-boot-devtools'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
+	// MySQL JDBC Driver
+	implementation 'mysql:mysql-connector-java:8.0.33' // Ensure the version is compatible with your setup
+
 	// Jakarta Persistence (JPA) and Hibernate
-	implementation 'jakarta.persistence:jakarta.persistence-api:3.0.0' // Adjust version as needed
-	implementation 'org.hibernate:hibernate-core:5.6.12.Final' // Compatible version with Spring Boot 2.7.x
+	implementation 'jakarta.persistence:jakarta.persistence-api:3.0.0'
+	implementation 'org.hibernate:hibernate-core:5.6.12.Final'
 
 	// Lombok
 	compileOnly 'org.projectlombok:lombok:1.18.24'
 	annotationProcessor 'org.projectlombok:lombok:1.18.24'
 }
+
 
 // Use the latest syntax for annotation processing
 tasks.withType(JavaCompile).configureEach {
